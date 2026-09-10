@@ -1,0 +1,47 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm required site files exist
+        run: |
+          test -f index.html
+          test -f styles.css
+          test -f robots.txt
+          test -f sitemap.xml
+      - name: Block placeholder SEO URLs from production deploys
+        run: |
+          if grep -R "YOUR-GITHUB-USERNAME\|YOUR-REPOSITORY-NAME" robots.txt sitemap.xml; then
+            echo "Replace the SEO URL placeholders in robots.txt and sitemap.xml before publishing."
+            exit 1
+          fi
+  deploy:
+    needs: validate
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
