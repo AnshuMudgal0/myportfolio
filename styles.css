@@ -1,13 +1,13 @@
 /* ============================================================
-   Anshu Mudgal â€” Portfolio
-   Design concept: "Product Dossier" â€” the precision of a product
+   Anshu Mudgal — Portfolio
+   Design concept: "Product Dossier" — the precision of a product
    spec sheet crossed with an enterprise annual report. One bold
    dark cover (hero), calm paper-toned sections after it.
    ============================================================ */
 
 :root {
   /* Color */
-  --ink: #101b33;          /* deep navy ink â€” hero bg, headings */
+  --ink: #101b33;          /* deep navy ink — hero bg, headings */
   --ink-soft: #29354f;     /* body text on paper */
   --paper: #f5f6f3;        /* page background */
   --panel: #eceee8;        /* alternating panel background */
@@ -15,9 +15,9 @@
   --line-dark: #2c3a5c;    /* hairline dividers on ink */
   --slate: #5c6578;        /* secondary / meta text */
   --slate-on-ink: #aab3cc; /* secondary text on dark ink */
-  --gold: #b9862f;         /* primary accent â€” metrics, marks */
+  --gold: #b9862f;         /* primary accent — metrics, marks */
   --gold-bright: #d7a34a;  /* gold on dark backgrounds */
-  --teal: #1c6d68;         /* secondary accent â€” tags, links */
+  --teal: #1c6d68;         /* secondary accent — tags, links */
   --paper-on-ink: #f5f6f3;
 
   /* Type */
